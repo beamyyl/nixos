@@ -129,15 +129,22 @@
   system.stateVersion = "26.05";
 
   # Services and DE's / WM's
-#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
   services.flatpak.enable = true;
+  services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+  };
+#  services.xserver.windowManager.dwm.enable = true;
+#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
+  services.printing.enable = true;
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm.enable = true;
+  systemd.services.display-manager.wantedBy = lib.mkForce [ ];
   services.desktopManager.plasma6.enable = true;
   services.desktopManager.gnome.enable = true;
   services.xserver.displayManager.startx.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
   programs.hyprland.enable = true;
 }
