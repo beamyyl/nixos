@@ -53,16 +53,16 @@
   };
 
   # dwm things
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = prev.dwm.overrideAttrs (oldAttrs: {
-        src = builtins.path { path = "/home/beamy/dwm/dwm"; };
-      });
-      st = prev.st.overrideAttrs (oldAttrs: {
-        src = builtins.path { path = "/home/beamy/dwm/st"; };
-      });
-    })
-  ];
+#  nixpkgs.overlays = [
+#    (final: prev: {
+#      dwm = prev.dwm.overrideAttrs (oldAttrs: {
+#        src = builtins.path { path = "/home/beamy/dwm/dwm"; };
+#      });
+#      st = prev.st.overrideAttrs (oldAttrs: {
+#        src = builtins.path { path = "/home/beamy/dwm/st"; };
+#      });
+#    })
+#  ];
 
   environment.systemPackages = with pkgs; [
     neovim 
@@ -94,11 +94,11 @@
     unrar
     tmux
     rofi
-    dwm
-    st
+#    (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {})
+#    dwm
+#    st
     noctalia-shell
     xwallpaper
-    (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {})
   ];
 
   # apps Apps ^
@@ -129,6 +129,7 @@
   system.stateVersion = "26.05";
 
   # Services and DE's / WM's
+#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
   services.flatpak.enable = true;
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
@@ -139,5 +140,4 @@
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.dwm.enable = true;
   programs.hyprland.enable = true;
-  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
 }
