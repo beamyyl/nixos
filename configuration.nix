@@ -58,16 +58,16 @@
   };
 
   # Some custom builds
-  nixpkgs.overlays = [
-    (final: prev: {
-      dwm = prev.dwm.overrideAttrs (oldAttrs: {
-        src = builtins.path { path = "/home/beamy/dwm/dwm"; };
-      });
-      st = prev.st.overrideAttrs (oldAttrs: {
-        src = builtins.path { path = "/home/beamy/dwm/st"; };
-      });
-    })
-  ];
+#  nixpkgs.overlays = [
+#    (final: prev: {
+#      dwm = prev.dwm.overrideAttrs (oldAttrs: {
+#        src = builtins.path { path = "/home/beamy/dwm/dwm"; };
+#      });
+#      st = prev.st.overrideAttrs (oldAttrs: {
+#        src = builtins.path { path = "/home/beamy/dwm/st"; };
+#      });
+#    })
+#  ];
 
   environment.systemPackages = with pkgs; [
     neovim 
@@ -99,48 +99,48 @@
     unrar
     tmux
     rofi
-    dwm
-    st
+#    dwm
+#    st
     noctalia-shell
     cava
     xwallpaper
-    (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {})
+#    (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {})
     xwayland-satellite
     wlr-randr
     openjdk21
-    dnsmasq
-    bridge-utils
-    netcat-openbsd
-    virt-viewer
+#    dnsmasq
+#    bridge-utils
+#    netcat-openbsd
+#    virt-viewer
     cmatrix
   ];
   # programs Programs apps Apps ^
 
   # Virtualisation
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-    };
-  };
-  programs.virt-manager.enable = true;
+#  virtualisation.libvirtd = {
+#    enable = true;
+#    qemu = {
+#      package = pkgs.qemu_kvm;
+#      runAsRoot = true;
+#    };
+#  };
+#  programs.virt-manager.enable = true;
 
   # Polkit agent (mates)
-  security.polkit.enable = true;
-  systemd.user.services.polkit-mate-authentication-agent-1 = {
-  description = "polkit-mate-authentication-agent-1";
-  wantedBy = [ "graphical-session.target" ];
-  wants = [ "graphical-session.target" ];
-  after = [ "graphical-session.target" ];
-  serviceConfig = {
-    Type = "simple";
-    ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
-    Restart = "on-failure";
-    RestartSec = 1;
-    TimeoutStopSec = 10;
-  };
-  };
+#  security.polkit.enable = true;
+#  systemd.user.services.polkit-mate-authentication-agent-1 = {
+#  description = "polkit-mate-authentication-agent-1";
+#  wantedBy = [ "graphical-session.target" ];
+#  wants = [ "graphical-session.target" ];
+#  after = [ "graphical-session.target" ];
+#  serviceConfig = {
+#    Type = "simple";
+#    ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+#    Restart = "on-failure";
+#    RestartSec = 1;
+#    TimeoutStopSec = 10;
+#  };
+#  };
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -170,11 +170,11 @@
 
   # Services and DE's / WM's
   services.flatpak.enable = true;
-  services.avahi = {
-  enable = true;
-  nssmdns4 = true;
-  openFirewall = true;
-  };
+#  services.avahi = {
+#  enable = true;
+#  nssmdns4 = true;
+#  openFirewall = true;
+#  };
   programs.xwayland.enable = true;
   services.printing.enable = true;
   services.xserver.enable = true;
@@ -184,8 +184,8 @@
   services.desktopManager.gnome.enable = true;
   services.xserver.displayManager.startx.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
+#  services.xserver.windowManager.dwm.enable = true;
   programs.hyprland.enable = true;
   programs.niri.enable = true;
-  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
+#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
 }
