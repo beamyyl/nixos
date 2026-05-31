@@ -141,6 +141,8 @@
 #  nssmdns4 = true;
 #  openFirewall = true;
 #  };
+#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
+#  services.xserver.windowManager.dwm.enable = true;
   services.flatpak.enable = true;
   programs.xwayland.enable = true;
   services.xserver.enable = true;
@@ -150,8 +152,6 @@
   services.desktopManager.gnome.enable = true;
   services.xserver.displayManager.startx.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
   programs.hyprland.enable = true;
   programs.niri.enable = true;
-#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
 }
