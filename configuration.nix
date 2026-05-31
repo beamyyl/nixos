@@ -52,7 +52,11 @@
     };
   };
 
-  # dwm things
+  environment.sessionVariables = {
+  PATH = [ "$HOME/.local/bin" ];
+  };
+
+  # Some custom builds
 #  nixpkgs.overlays = [
 #    (final: prev: {
 #      dwm = prev.dwm.overrideAttrs (oldAttrs: {
@@ -99,11 +103,12 @@
 #    st
     noctalia-shell
     xwallpaper
+    xwayland-satellite
+    wlr-randr
   ];
+  # programs Programs apps Apps ^
 
-  # apps Apps ^
-
-  # Fonts:
+  # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka
     nerd-fonts.adwaita-mono
@@ -123,28 +128,30 @@
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # Conflicts:
+  # Conflicts
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
 
+  # idk what this is, useless
   system.stateVersion = "26.05";
 
   # Services and DE's / WM's
+#  services.printing.enable = true;
+#  services.avahi = {
+#  enable = true;
+#  nssmdns4 = true;
+#  openFirewall = true;
+#  };
   services.flatpak.enable = true;
-  services.avahi = {
-  enable = true;
-  nssmdns4 = true;
-  openFirewall = true;
-  };
-#  services.xserver.windowManager.dwm.enable = true;
-#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
-  services.printing.enable = true;
+  programs.xwayland.enable = true;
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm.enable = true;
-  systemd.services.display-manager.wantedBy = lib.mkForce [ ];
   services.desktopManager.plasma6.enable = true;
   services.desktopManager.gnome.enable = true;
   services.xserver.displayManager.startx.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
   programs.hyprland.enable = true;
+  programs.niri.enable = true;
+#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
 }
