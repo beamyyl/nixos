@@ -50,6 +50,7 @@
       ff = "fastfetch";
       syu = "sudo nixos-rebuild switch --upgrade";
       sf = "synfetch";
+      java = "steam-run java";
     };
   };
 
@@ -73,6 +74,8 @@
     neovim 
     wget
     fastfetch
+    btop
+    htop
     pfetch
     screenfetch
     alacritty
@@ -113,6 +116,7 @@
 #    netcat-openbsd
 #    virt-viewer
     cmatrix
+    steam-run-free
   ];
   # programs Programs apps Apps ^
 
@@ -127,20 +131,20 @@
 #  programs.virt-manager.enable = true;
 
   # Polkit agent (mates)
-#  security.polkit.enable = true;
-#  systemd.user.services.polkit-mate-authentication-agent-1 = {
-#  description = "polkit-mate-authentication-agent-1";
-#  wantedBy = [ "graphical-session.target" ];
-#  wants = [ "graphical-session.target" ];
-#  after = [ "graphical-session.target" ];
-#  serviceConfig = {
-#    Type = "simple";
-#    ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
-#    Restart = "on-failure";
-#    RestartSec = 1;
-#    TimeoutStopSec = 10;
-#  };
-#  };
+  security.polkit.enable = true;
+  systemd.user.services.polkit-mate-authentication-agent-1 = {
+  description = "polkit-mate-authentication-agent-1";
+  wantedBy = [ "graphical-session.target" ];
+  wants = [ "graphical-session.target" ];
+  after = [ "graphical-session.target" ];
+  serviceConfig = {
+    Type = "simple";
+    ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+    Restart = "on-failure";
+    RestartSec = 1;
+    TimeoutStopSec = 10;
+  };
+  };
 
   # Fonts
   fonts.packages = with pkgs; [
