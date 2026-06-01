@@ -16,8 +16,6 @@
     efiSysMountPoint = "/boot/efi";
   };
 
-  # Load the AMD graphics driver early in the boot sequence to prevent Xorg crashes
-  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "nixos";
 
@@ -57,8 +55,6 @@
 
   environment.sessionVariables = {
     PATH = [ "$HOME/.local/bin" ];
-    # Forces Electron and Chromium apps to run natively on Wayland when you use it
-    NIXOS_OZONE_WL = "1";
   };
 
   # Some custom builds
@@ -77,6 +73,8 @@
     neovim 
     wget
     fastfetch
+    btop
+    htop
     pfetch
     screenfetch
     alacritty
@@ -152,14 +150,13 @@
     nerd-fonts.adwaita-mono
   ];
 
-  # Drivers & GPU Configuration
+  # Drivers 
   nixpkgs.config.allowUnfree = true;
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
-
   hardware.nvidia = {
     modesetting.enable = true;
     open = true; 
