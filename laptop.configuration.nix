@@ -50,6 +50,8 @@
       ff = "fastfetch";
       syu = "sudo nixos-rebuild switch --upgrade";
       sf = "synfetch";
+      java = "steam-run java";
+      prime-run = "nvidia-offload";
     };
   };
 
@@ -58,16 +60,16 @@
   };
 
   # Some custom builds
-#  nixpkgs.overlays = [
-#    (final: prev: {
-#      dwm = prev.dwm.overrideAttrs (oldAttrs: {
-#        src = builtins.path { path = "/home/beamy/dwm/dwm"; };
-#      });
-#      st = prev.st.overrideAttrs (oldAttrs: {
-#        src = builtins.path { path = "/home/beamy/dwm/st"; };
-#      });
-#    })
-#  ];
+ # nixpkgs.overlays = [
+ #   (final: prev: {
+ #     dwm = prev.dwm.overrideAttrs (oldAttrs: {
+ #       src = builtins.path { path = "/home/beamy/dwm/dwm"; };
+ #     });
+ #     st = prev.st.overrideAttrs (oldAttrs: {
+ #       src = builtins.path { path = "/home/beamy/dwm/st"; };
+ #     });
+ #   })
+ # ];
 
   environment.systemPackages = with pkgs; [
     neovim 
@@ -101,8 +103,8 @@
     unrar
     tmux
     rofi
-#    dwm
-#    st
+    dwm
+    st
     noctalia-shell
     cava
     xwallpaper
@@ -115,6 +117,7 @@
 #    netcat-openbsd
 #    virt-viewer
     cmatrix
+    steam-run-free
   ];
   # programs Programs apps Apps ^
 
@@ -125,24 +128,24 @@
 #      package = pkgs.qemu_kvm;
 #      runAsRoot = true;
 #    };
-#  };
+# };
 #  programs.virt-manager.enable = true;
 
   # Polkit agent (mates)
-#  security.polkit.enable = true;
-#  systemd.user.services.polkit-mate-authentication-agent-1 = {
-#  description = "polkit-mate-authentication-agent-1";
-#  wantedBy = [ "graphical-session.target" ];
-#  wants = [ "graphical-session.target" ];
-#  after = [ "graphical-session.target" ];
-#  serviceConfig = {
-#    Type = "simple";
-#    ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
-#    Restart = "on-failure";
-#    RestartSec = 1;
-#    TimeoutStopSec = 10;
-#  };
-#  };
+  security.polkit.enable = true;
+  systemd.user.services.polkit-mate-authentication-agent-1 = {
+  description = "polkit-mate-authentication-agent-1";
+  wantedBy = [ "graphical-session.target" ];
+  wants = [ "graphical-session.target" ];
+  after = [ "graphical-session.target" ];
+  serviceConfig = {
+    Type = "simple";
+    ExecStart = "${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
+    Restart = "on-failure";
+    RestartSec = 1;
+    TimeoutStopSec = 10;
+  };
+  };
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -158,19 +161,20 @@
     enable32Bit = true;
   };
   hardware.nvidia = {
-    modesetting.enable = true;
     open = true; 
+    modesetting.enable = true;
     nvidiaSettings = true;
-#    prime = {
-#      offload = {
-#        enable = true;
-#        enableOffloadCmd = true;
-#      };
-#      amdBusId = "PCI:4:0:0";
-#      nvidiaBusId = "PCI:1:0:0";
-#    };
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true; 
+      };
+      amdgpuBusId = "PCI:4:0:0";
+      nvidiaBusId = "PCI:1:0:0"; 
+    };
   };
-  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+
+  services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
 
   # Conflicts
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
@@ -180,13 +184,13 @@
 
   # Services and DE's / WM's
   services.flatpak.enable = true;
+#  services.printing.enable = true;
 #  services.avahi = {
 #  enable = true;
 #  nssmdns4 = true;
 #  openFirewall = true;
 #  };
   programs.xwayland.enable = true;
-  services.printing.enable = true;
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm.enable = true;
