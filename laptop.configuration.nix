@@ -196,6 +196,23 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (with pkgs; [
+  epiphany
+  geary  
+  gnome-maps
+  gnome-weather
+  gnome-contacts
+  gnome-font-viewer
+  gnome-logs
+  gnome-music
+  gnome-tour
+  gnome-connections
+  loupe  
+  totem 
+  evince
+  baobab
+  gnome-calendar
+  ]);
   services.xserver.displayManager.startx.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 #  services.xserver.windowManager.dwm.enable = true;
