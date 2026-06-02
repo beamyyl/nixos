@@ -48,9 +48,9 @@
     };
     shellAliases = {
       ff = "fastfetch";
-      syu = "sudo nixos-rebuild switch --upgrade";
+      syu = "sudo nixos-rebuild switch --upgrade && flatpak update -y";
       sf = "synfetch";
-      java = "steam-run java";
+      java = "nvidia-offload steam-run java";
       prime-run = "nvidia-offload";
     };
   };
@@ -103,8 +103,8 @@
     unrar
     tmux
     rofi
-    dwm
-    st
+#    dwm
+#    st
     noctalia-shell
     cava
     xwallpaper
