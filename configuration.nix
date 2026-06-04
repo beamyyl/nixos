@@ -10,19 +10,19 @@
     enable = true;
     device = "nodev";
     efiSupport = true;
-    theme = "/boot/grub/themes/catppuccin-macchiato-grub-theme";
+#    theme = "/boot/grub/themes/catppuccin-macchiato-grub-theme";
     configurationName = "NixOS";
     useOSProber = false;
-    extraEntries = ''
-      menuentry "Windows 10" --class windows --class os {
-          insmod part_gpt
-          insmod fat
-          insmod search_fs_uuid
-          insmod chain
-          search --no-floppy --fs-uuid --set=root 8C4D-C213
-          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-      }
-    '';
+#    extraEntries = ''
+#      menuentry "Windows 10" --class windows --class os {
+#          insmod part_gpt
+#          insmod fat
+#          insmod search_fs_uuid
+#          insmod chain
+#          search --no-floppy --fs-uuid --set=root 8C4D-C213
+#          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+#      }
+#    '';
   };
   boot.loader.efi = {
     canTouchEfiVariables = true;
