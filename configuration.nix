@@ -10,6 +10,19 @@
     enable = true;
     device = "nodev";
     efiSupport = true;
+    theme = "/boot/grub/themes/catppuccin-macchiato-grub-theme";
+    configurationName = "NixOS";
+    useOSProber = false;
+    extraEntries = ''
+      menuentry "Windows 10" --class windows --class os {
+          insmod part_gpt
+          insmod fat
+          insmod search_fs_uuid
+          insmod chain
+          search --no-floppy --fs-uuid --set=root 8C4D-C213
+          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+      }
+    '';
   };
   boot.loader.efi = {
     canTouchEfiVariables = true;
@@ -74,8 +87,6 @@
     neovim 
     wget
     fastfetch
-    btop
-    htop
     pfetch
     screenfetch
     alacritty
@@ -97,7 +108,6 @@
     gnome-extension-manager
     ptyxis
     papirus-icon-theme
-    spotify
     unzip
     unrar
     tmux
@@ -111,24 +121,36 @@
     xwayland-satellite
     wlr-randr
     openjdk21
-#    dnsmasq
-#    bridge-utils
-#    netcat-openbsd
-#    virt-viewer
+    dnsmasq
+    bridge-utils
+    netcat-openbsd
+    virt-viewer
     cmatrix
     steam-run-free
+    gamemode
+    mission-center
+    linuxPackages.cpupower
   ];
   # programs Programs apps Apps ^
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        xorg.libXxf86vm 
+        libGL
+      ];
+    };
+  };
+
   # Virtualisation
-#  virtualisation.libvirtd = {
-#    enable = true;
-#    qemu = {
-#      package = pkgs.qemu_kvm;
-#      runAsRoot = true;
-#    };
-#  };
-#  programs.virt-manager.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+    };
+  };
+  programs.virt-manager.enable = true;
 
   # Polkit agent (mates)
   security.polkit.enable = true;
@@ -143,7 +165,7 @@
     Restart = "on-failure";
     RestartSec = 1;
     TimeoutStopSec = 10;
-  };
+    };
   };
 
   # Fonts
@@ -174,39 +196,25 @@
 
   # Services and DE's / WM's
   services.flatpak.enable = true;
-#  services.avahi = {
-#  enable = true;
-#  nssmdns4 = true;
-#  openFirewall = true;
-#  };
+  services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+  };
   programs.xwayland.enable = true;
   services.printing.enable = true;
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
-  epiphany
-  geary  
-  gnome-maps
-  gnome-weather
-  gnome-contacts
-  gnome-font-viewer
-  gnome-logs
-  gnome-music
-  gnome-tour
-  gnome-connections
-  loupe  
-  totem 
-  evince
-  baobab
-  gnome-calendar
-  ]);
   services.xserver.displayManager.startx.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
 #  services.xserver.windowManager.dwm.enable = true;
   programs.hyprland.enable = true;
   programs.niri.enable = true;
-#  services.displayManager.sessionPackages = [ (pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) ];
+  programs.steam.enable = true;
+#  services.displayManager.sessionPackages = [
+#  	(pkgs.callPackage /home/beamy/beamwm/beamwm.nix {}) 
+#  	(pkgs.callPackage /home/beamy/mangowm/mango.nix {}) 
+#  ];
 }
