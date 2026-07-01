@@ -190,6 +190,7 @@
 
   # Conflicts
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+  environment.sessionVariables.NIX_GSETTINGS_OVERRIDES_DIR = pkgs.lib.mkForce "${pkgs.gnome-desktop}/share/gsettings-schemas/gnome-desktop-${pkgs.gnome-desktop.version}";
 
   # idk what this is, useless
   system.stateVersion = "26.05";
