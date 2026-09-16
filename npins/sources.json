@@ -1,0 +1,53 @@
+{
+  "pins": {
+    "fetch": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "areofyl",
+        "repo": "fetch"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.3.0",
+      "revision": "9c8bb96bf47460b7c73c9e3423f8d073a67222d3",
+      "url": "https://api.github.com/repos/areofyl/fetch/tarball/refs/tags/v2.3.0",
+      "hash": "sha256-YEHvV07d02SzYO+lGT0Q+NkVoQNqxapBZfh44NOf/cw="
+    },
+    "flake-compat": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "edolstra",
+        "repo": "flake-compat"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.1.0",
+      "revision": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
+      "url": "https://api.github.com/repos/edolstra/flake-compat/tarball/refs/tags/v1.1.0",
+      "hash": "sha256-NeCCThCEP3eCl2l/+27kNNK7QrwZB1IJCrXfrbv5oqU="
+    },
+    "mango": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "mangowm",
+        "repo": "mango"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "0.17.1",
+      "revision": "4a63a53e76ae1446516e5b57475a3ba4da030b4b",
+      "url": "https://api.github.com/repos/mangowm/mango/tarball/refs/tags/0.17.1",
+      "hash": "sha256-mA895pLNWUsk+r/q6rxyMUwuV3rOvNZYySuMtXJBw+A="
+    }
+  },
+  "version": 8
+}
