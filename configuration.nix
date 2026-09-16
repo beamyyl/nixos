@@ -32,7 +32,7 @@ in
   programs.fish = {
     enable = true;
     shellAliases = {
-      syu='sudo sh -c "cd /etc/nixos && npins update && nixos-rebuild switch --upgrade"';
+      syu="'sudo sh -c "cd /etc/nixos && npins update && nixos-rebuild switch --upgrade"'";
       ff="fastfetch";
       java = "steam-run java";
       };
