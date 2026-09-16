@@ -38,7 +38,7 @@ in
       };
   };
   environment.sessionVariables = { PATH = [ "$HOME/.local/bin" ]; };
-  environment.systemPackages = with pkgs; [ neovim wget fastfetch alacritty foot pcmanfm xclip maim slurp npins grim wl-clipboard firefox git gcc gpp papirus-icon-theme unzip unrar tmux rofi cava xwallpaper xwayland-satellite wlr-randr openjdk25 dnsmasq bridge-utils netcat-openbsd virt-viewer cmatrix steam-run-free appimage-run gamemode mission-center linuxPackages.cpupower noctalia ];
+  environment.systemPackages = with pkgs; [ neovim wget fastfetch alacritty foot pcmanfm xclip maim slurp npins grim wl-clipboard firefox git gcc gpp papirus-icon-theme unzip unrar tmux rofi cava xwallpaper xwayland-satellite wlr-randr openjdk25 dnsmasq bridge-utils netcat-openbsd virt-viewer cmatrix steam-run-free appimage-run gamemode mission-center linuxPackages.cpupower ];
   # programs Programs apps Apps ^
 
   virtualisation.libvirtd = {
