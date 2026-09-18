@@ -1,0 +1,66 @@
+{
+  "pins": {
+    "fetch": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "areofyl",
+        "repo": "fetch"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.3.0",
+      "revision": "9c8bb96bf47460b7c73c9e3423f8d073a67222d3",
+      "url": "https://api.github.com/repos/areofyl/fetch/tarball/refs/tags/v2.3.0",
+      "hash": "sha256-YEHvV07d02SzYO+lGT0Q+NkVoQNqxapBZfh44NOf/cw="
+    },
+    "flake-compat": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "edolstra",
+        "repo": "flake-compat"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.1.0",
+      "revision": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
+      "url": "https://api.github.com/repos/edolstra/flake-compat/tarball/refs/tags/v1.1.0",
+      "hash": "sha256-NeCCThCEP3eCl2l/+27kNNK7QrwZB1IJCrXfrbv5oqU="
+    },
+    "mango": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "mangowm",
+        "repo": "mango"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "0.17.2",
+      "revision": "9d225a968a2e80c44fb2e5bc14d262b1ddb39967",
+      "url": "https://api.github.com/repos/mangowm/mango/tarball/refs/tags/0.17.2",
+      "hash": "sha256-22UfPBrkTn+6Dr4VETMWcGy7B8taQMeivV3CV3KrbcU="
+    },
+    "nix-snapd": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "nix-snapd"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "f7694a0e26d890e285137e1b726b1b44038805c4",
+      "url": "https://github.com/nix-community/nix-snapd/archive/f7694a0e26d890e285137e1b726b1b44038805c4.tar.gz",
+      "hash": "sha256-OKuNVXmHuZ0zi8T0aGWrBJizIfvdTqV1RiV0IN8GPZs="
+    }
+  },
+  "version": 8
+}
