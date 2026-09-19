@@ -62,7 +62,7 @@ in
   };
 
   services.xserver.enable = true;
-  environment.gnome.excludePackages = with pkgs; [ gnome-weather gnome-console gnome-calendar gnome-font-viewer gnome-maps epiphany baobab gnome-maps gnome-music gnome-tour gnome-characters yelp gnome-contacts gnome-connections gnome-disk-utility gnome-user-docs ];
+  environment.gnome.excludePackages = with pkgs; [ gnome-weather gnome-console gnome-calendar gnome-font-viewer gnome-maps epiphany baobab gnome-music gnome-tour gnome-characters yelp gnome-contacts gnome-connections gnome-disk-utility gnome-user-docs ];
   programs.xwayland.enable = true;
   services.flatpak.enable = true;
   services.displayManager.gdm.enable = true;
