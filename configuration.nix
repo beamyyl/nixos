@@ -58,8 +58,8 @@ in
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
-    nvidiaSettings = true;
   };
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   services.xserver.enable = true;
   environment.gnome.excludePackages = with pkgs; [ gnome-weather gnome-console gnome-calendar gnome-font-viewer gnome-maps epiphany baobab gnome-music gnome-tour gnome-characters yelp gnome-contacts gnome-connections gnome-disk-utility gnome-user-docs ];
