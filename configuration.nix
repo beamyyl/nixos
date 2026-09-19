@@ -58,6 +58,7 @@ in
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
+    nvidiaSettings = false;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
