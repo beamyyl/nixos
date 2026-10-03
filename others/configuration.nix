@@ -38,5 +38,5 @@
   services.displayManager.gdm.enable = true;
   services.flatpak.enable = true;
   services.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = with pkgs; [ gnome-weather gnome-console gnome-maps gnome-calendar gnome-font-viewer epiphany baobab gnome-music gnome-tour gnome-characters yelp gnome-contacts gnome-connections gnome-disk-utility gnome-user-docs simple-scan showtime ];
+  environment.gnome.excludePackages = with pkgs; [ gnome-weather gnome-console gnome-maps gnome-calendar gnome-font-viewer epiphany baobab gnome-music gnome-tour gnome-characters yelp gnome-contacts gnome-connections gnome-disk-utility gnome-user-docs simple-scan showtime decibels papers gnome-logs ];
 }
